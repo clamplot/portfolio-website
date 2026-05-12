@@ -1,6 +1,31 @@
 import Navigation from '@/components/portfolio/Navigation';
+import { client } from '@/lib/sanity'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Project } from '@/types/project'
 
-export default function Home() {
+
+async function getProjects() {
+  const projects = await client.fetch(`
+    *[_type == "project"] | order(featured desc, publishedAt desc) {
+      _id,
+      title,
+      slug,
+      description,
+      techStack,
+      liveUrl,
+      githubUrl,
+      featured,
+      "mainImage": mainImage.asset->url,
+      "media": media[].asset->url
+    }
+  `)
+  return projects
+}
+
+
+export default async function Home() {
+  const projects = await getProjects()
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <Navigation />
@@ -51,26 +76,66 @@ export default function Home() {
       <section id="projects" className="py-28 px-6 bg-zinc-900">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl font-semibold mb-16">Featured Projects</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Placeholder cards — we'll replace with Sanity data soon */}
-            {[1, 2, 3, 4].map((i) => (
+            {projects.map((project: Project) => (
               <div
-                key={i}
-                className="group bg-zinc-800 rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                key={project._id}
+                className="group bg-zinc-800 rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300"
               >
-                <div className="h-80 bg-zinc-700 flex items-center justify-center relative">
-                  <span className="text-zinc-500 text-xl">Project Media {i}</span>
-                </div>
+                {/* Main Image */}
+                {project.mainImage && (
+                  <div className="relative h-80 overflow-hidden">
+                    <Image
+                      src={project.mainImage}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+
                 <div className="p-10">
-                  <h3 className="text-3xl font-medium mb-3">Project Title {i}</h3>
-                  <p className="text-zinc-400 mb-6 line-clamp-2">
-                    Short description of the project and technologies used.
+                  <h3 className="text-3xl font-medium mb-3">{project.title}</h3>
+                  
+                  <p className="text-zinc-400 mb-6 line-clamp-3">
+                    {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-4 py-2 bg-zinc-700 rounded-full">Next.js</span>
-                    <span className="text-xs px-4 py-2 bg-zinc-700 rounded-full">TypeScript</span>
-                    <span className="text-xs px-4 py-2 bg-zinc-700 rounded-full">Tailwind</span>
+
+                  {/* Tech Stack */}
+                  {project.techStack && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.techStack.map((tech: string) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-4 py-2 bg-zinc-700 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Links */}
+                  <div className="flex gap-4">
+                    {project.liveUrl && (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        className="text-emerald-400 hover:text-emerald-500 font-medium"
+                      >
+                        Live Demo →
+                      </Link>
+                    )}
+                    {project.githubUrl && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        className="text-emerald-400 hover:text-emerald-500 font-medium"
+                      >
+                        GitHub →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -78,7 +143,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Contact */}
       <section id="contact" className="py-28 px-6 text-center">
         <div className="max-w-lg mx-auto">
