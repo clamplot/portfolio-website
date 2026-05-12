@@ -86,12 +86,14 @@ export default async function Home() {
                 {/* Main Image */}
                 {project.mainImage && (
                   <div className="relative h-80 overflow-hidden">
+                    <Link href={`/projects/${project.slug.current}`} className="block">
                     <Image
                       src={project.mainImage}
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    </Link>
                   </div>
                 )}
 

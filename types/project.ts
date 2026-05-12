@@ -5,7 +5,8 @@ export interface Project {
     current: string
   }
   description?: string
-  longDescription?: unknown[] // Portable Text
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  longDescription?: any[] // Portable Text
   techStack?: string[]
   liveUrl?: string
   githubUrl?: string

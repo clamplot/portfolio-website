@@ -5,7 +5,7 @@ export default function StudioLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-zinc-950">{children}</body>
     </html>
   )
 }
