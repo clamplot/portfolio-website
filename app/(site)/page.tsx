@@ -33,16 +33,17 @@ export default async function Home() {
       {/* Hero Section - Bigger & Cleaner */}
       <section className="min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="max-w-5xl text-center">
-          <div className="mb-6 inline-block px-4 py-1.5 bg-emerald-500/10 text-emerald-400 text-sm rounded-full border border-emerald-500/20">
-            Available for freelance & opportunities
+          {/* <div className="mb-6 inline-block px-4 py-1.5 bg-emerald-500/10 text-emerald-400 text-sm rounded-full border border-emerald-500/20">
+            Senior Controls Engineer @ Syntegon
           </div>
-          
+           */}
           <h1 className="text-7xl md:text-8xl font-bold tracking-tighter mb-8">
             Hi, I&apos;m <span className="text-emerald-400">Corbin Lamplot</span>
           </h1>
           
           <p className="text-2xl md:text-3xl text-zinc-400 max-w-3xl mx-auto mb-12">
-            Versatile Software & Embedded Engineer | Full-Stack & IoT/Hardware | Founder @ Garden Sync
+            <span className="text-emerald-400">Syntegon</span> Senior Controls Engineer<br/>
+            <span className="text-emerald-400">Garden Sync</span> Founder & Full-Stack Developer<br/> 
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -56,7 +57,7 @@ export default async function Home() {
               href="#contact"
               className="px-10 py-4 border border-white/30 rounded-full font-semibold hover:bg-white/10 transition-all"
             >
-              Let&apos;s Talk
+              Get In Touch
             </a>
           </div>
         </div>
@@ -67,7 +68,7 @@ export default async function Home() {
         <h2 className="text-5xl font-semibold mb-10">About Me</h2>
         <div className="prose prose-invert prose-lg text-zinc-400">
           <p>
-             I’m a versatile Software & Embedded Systems Engineer with a B.S. in Computer Science from the University of Nebraska-Lincoln (ABET-accredited) and 4+ years of hands-on development experience. Proficient in C#, C++, .NET, JavaScript/TypeScript, React, Docker, SQL/NoSQL, and AI, I build complete solutions from microcontroller firmware all the way to production-ready cloud applications. At Kage Innovation I delivered automation solutions with API integration and custom applications. This included C#/.NET tools that cut R&D-to-production time by 70%, a React Native Bluetooth app for hydraulic plow control, ESP32/STM32 microcontroller systems, PLC programming for industrial electrical solutions, and M-Files/M1 (ERP software) customizations for business workflows and automations. In parallel, I founded Garden Sync — an IoT web app that brings precision agriculture directly to home gardeners. I designed and developed the full MERN-stack application (React + Express + MongoDB), implemented secure JWT authentication, hosted an MQTT server for real-time device communication, containerized everything with Docker + nginx, and set up CI/CD with GitHub Actions, all while adding ESP32 support for effortless user device programming. I thrive on independent project execution and bridging embedded systems, modern web technologies, cloud infrastructure, and AI to ship real products quickly. Open to conversations about full-stack, IoT, embedded software, or versatile engineering roles. Feel free to reach out!
+             I’m a versatile Software & Embedded Systems Engineer with a B.S. in Computer Science from the University of Nebraska-Lincoln (ABET-accredited) and 4+ years of hands-on development experience. Proficient in C#, C++, .NET, JavaScript/TypeScript, React, Docker, SQL/NoSQL, and AI, I build complete solutions from microcontroller firmware all the way to production-ready cloud applications. As a Senior Controls Engineer at Syntegon, I work on industrial automation and controls systems. Previously at Kage Innovation, I delivered automation solutions with API integration and custom applications, including C#/.NET tools that reduced R&D-to-production time by 70%, a React Native Bluetooth app for hydraulic plow control, ESP32/STM32 microcontroller systems, PLC programming, and ERP software customizations. In parallel, I founded Garden Sync — an IoT web app that brings precision agriculture directly to home gardeners. I designed and developed the full MERN-stack application (React + Express + MongoDB), implemented secure JWT authentication, hosted an MQTT server for real-time device communication, containerized everything with Docker + nginx, and set up CI/CD with GitHub Actions while adding ESP32 support for user device programming. I thrive on bridging embedded systems, modern web technologies, cloud infrastructure, and AI to ship real products quickly.
           </p>
         </div>
       </section>
@@ -148,15 +149,15 @@ export default async function Home() {
       {/* Contact */}
       <section id="contact" className="py-28 px-6 text-center">
         <div className="max-w-lg mx-auto">
-          <h2 className="text-5xl font-semibold mb-8">Let&apos;s Work Together</h2>
+          <h2 className="text-5xl font-semibold mb-8">Get In Touch</h2>
           <p className="text-xl text-zinc-400 mb-10">
-            I&apos;m always interested in new opportunities, collaborations, or just a friendly chat.
+            I&apos;m always happy to chat about embedded systems, automation, IoT, or anything you&apos;re working on.
           </p>
           <a
             href="mailto:corbinlamplot@gmail.com"
             className="inline-block px-12 py-5 bg-emerald-500 hover:bg-emerald-400 text-black text-lg font-semibold rounded-full transition-colors"
           >
-            Send me an email
+            Send an email
           </a>
         </div>
       </section>
